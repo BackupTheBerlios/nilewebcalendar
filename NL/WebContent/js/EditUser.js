@@ -1,0 +1,3 @@
+function isFormValid() {
+  return true;
+}
