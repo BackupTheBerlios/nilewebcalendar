@@ -20,20 +20,20 @@ public class BROUser extends BROBase {
 		return user;
 	}
 	
-	public void saveUser(User user) {
+	public void updateUser(User user) {
+		
+		session.update(user);
+	}
+
+	public void createUser(User user) {
 		
 		session.save(user);
 	}
-
+	
 	public void deleteUser(User user) {
 		
 		session.delete(user);
 	}
-	
-	public void updateUser(User user) {
-		
-		session.update(user);
-	}	
 	
 	public List<User> loadAllUsers() {
 		

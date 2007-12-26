@@ -12,19 +12,24 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Uzivatele - seznam</title>
+
+<script language="javascript" src="js/utils.js"></script>
+
 </head>
 <body>
 
 <h1>Uzivatele - seznam</h1>
 
-<table border=1>
-<tr>
-	<td><b>Jmeno</b></td>
-	<td><b>Vek</b></td>
-</tr>
 
-<%
+<table border=1 cellspacing=0 cellpadding=2>
+	<tr bgcolor=lightgray>
+		<td><b>Jmeno</b></td>
+		<td><b>Vek</b></td>
+		<td colspan=2>&nbsp;</td>
+	</tr>
+
+	<%
 	
 	BROUser broUser = new BROUser(getHbSession());
 	
@@ -33,19 +38,22 @@
 		out.println("<tr>");
 		out.println("<td>" + user.getName() + "</td>");
 		out.println("<td>" + user.getAge() + "</td>");
-		out.println("<td><a href='ShowUsersC?$method=edit&user_id=" + user.getId() + "'>Editovat</a></td>");
-		out.println("<td><a href='ShowUsersC?$method=delete&user_id=" + user.getId() + "'>Smazat</a></td>");
+		out.println("<td>");
+		out.println("<input type=button value='Upravit' onclick=\"navigate('ShowUsersC', 'showEdit',   'user_id=" + user.getId() + "');\" >");
+		out.println("<input type=button value='Smazat'  onclick=\"navigate('ShowUsersC', 'showDelete', 'user_id=" + user.getId() + "');\" >");		
+		out.println("</td>");
 		out.println("</tr>");
 	}
 		
-%>
+	%>
 
 </table>
 
 <p/>
 
-<A HREF="index.jsp">Jit na uvodni stranku</A>
+<input type="button" value="Rozcestnik" onclick="navigate('index.jsp');" />
 
+<input type="button" value="Pridat uzivatele" onclick="navigate('ShowUsersC', 'showAdd');" />
 
 </body>
 </html>

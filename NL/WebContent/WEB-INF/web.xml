@@ -19,6 +19,15 @@
 		<servlet-class>
 		webcalendar.controllers.EditUserC</servlet-class>
 	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>
+		DeleteUserC</display-name>
+		<servlet-name>DeleteUserC</servlet-name>
+		<servlet-class>
+		webcalendar.controllers.DeleteUserC</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>ShowUsersC</servlet-name>
 		<url-pattern>/ShowUsersC</url-pattern>
@@ -26,6 +35,10 @@
 	<servlet-mapping>
 		<servlet-name>EditUserC</servlet-name>
 		<url-pattern>/EditUserC</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DeleteUserC</servlet-name>
+		<url-pattern>/DeleteUserC</url-pattern>
 	</servlet-mapping>
 
 	

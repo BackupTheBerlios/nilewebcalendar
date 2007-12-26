@@ -38,7 +38,20 @@ public abstract class DefaultController extends HttpServlet {
 		return "show";
 	}
 	
-	protected final Map<String,String> createResponseParameters(HttpServletRequest request) {
+	/**
+	 * Vytvori prazdne parametry
+	 * @return
+	 */
+	protected final Map<String,String> createParameters() {
+		return new HashMap<String,String>();		
+	}
+	
+	/**
+	 * Vytvori parametry z requestu
+	 * @param request
+	 * @return
+	 */
+	protected final Map<String,String> createParameters(HttpServletRequest request) {
 		Map<String,String> params=new HashMap<String,String>();		
 		Enumeration en=request.getParameterNames();
 		while(en.hasMoreElements()){				
@@ -52,23 +65,21 @@ public abstract class DefaultController extends HttpServlet {
 	}
 
 	private String completeParams(Map<String,String> params) {
-		String str;
+
 		if (params==null) {
-			str="";
+			return "";
 		}
-		else {
-			StringBuffer sb=new StringBuffer();		
-			Iterator it=params.entrySet().iterator();
-			while(it.hasNext()) {
-				Map.Entry entry= (Map.Entry)it.next();
-				sb.append(entry.getKey());
-				sb.append("=");
-				sb.append(entry.getValue());
-				sb.append("&");
-			}
-			str=sb.toString();
+		
+		StringBuffer sb=new StringBuffer();		
+		Iterator it=params.entrySet().iterator();
+		while(it.hasNext()) {
+			Map.Entry entry= (Map.Entry)it.next();
+			sb.append(entry.getKey());
+			sb.append("=");
+			sb.append(entry.getValue());
+			sb.append("&");
 		}
-		return str;		
+		return sb.toString();
 	}
 		
 	protected final void showView(HttpServletResponse response, String jsp, Map<String,String> params) throws IOException {			
@@ -121,9 +132,15 @@ public abstract class DefaultController extends HttpServlet {
 			tx = null;			
 		}	
 	}
+		
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+
+		doGet(req,resp);
+	}
 
 	public void show(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		response.getOutputStream().println("Default method not implemented!");
+		response.getOutputStream().println("Show method not implemented!");
 	}	
 		
 }

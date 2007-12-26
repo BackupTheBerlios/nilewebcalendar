@@ -17,51 +17,51 @@
 <script language="javascript" src="js/EditUser.js"></script>
 
 
-<title>Insert title here</title>
+<title>Uzivatel - vytvoreni/editace</title>
 </head>
 <body>
 
 
-<h1>Uzivatel - editace</h1>
+<h1>Uzivatel - vytvoreni/editace</h1>
 
 <%	
 	String userIdParam=request.getParameter("user_id");
+
+	String name="";
+	String age="";
 
 	User user;
 	if (userIdParam!=null) {
 		BROUser broUser = new BROUser(getHbSession());
 		user=broUser.loadUser(Integer.parseInt(userIdParam));
-	}
-	else {
-		user = new User();
+		name=user.getName();
+		age=String.valueOf(user.getAge());
 	}
 %>
 
-<form id="mainform" action='EditUserC' method='get'>
+<form>
 
-<input type=hidden name='user_id' value='<%=userIdParam %>' />
-
-<table border=1>
-<tr>
-	<td><b>Jmeno</b></td>
-	<td><input type=text name="name" value='<%=user.getName() %>'></td>
-</tr>
-<tr>
-	<td><b>Vek</b></td>
-	<td><input type=text name="vek" value='<%=user.getAge() %>'></td>
-</tr>
-</table>
-
-<p/>
-
-<a href="javascript:if (isFormValid()) submitForm(mainform, 'EditUserC', 'save');" >Ulozit</a>
-<a href="javascript:submitForm(mainform, 'EditUserC', 'goBack');" >Zpet</a>
-<a href="javascript:mainform.submit()" >Zpetka</a>
-
-<input type=submit name="tlac" value='chacha'>
-</form>
+	<input type=hidden name='user_id' value='<%=userIdParam!=null ? userIdParam : "" %>' />
 	
+	<table border=0>
+	<tr>
+		<td><b>Jmeno</b></td>
+		<td><input type=text id="name" name="name" value='<%=name %>'></td>
+	</tr>
+	<tr>
+		<td><b>Vek</b></td>
+		<td><input type=text name="age" value='<%=age %>'></td>
+	</tr>
+	</table>
+	
+	<p/>
+	
+	<input type=button value='Ulozit' onclick="submitForm('EditUserC', 'save')">
+	<input type=button value='Zpet' onclick="submitForm('EditUserC', 'goBack')">	
 
+</form>	
+
+<script>$("name").focus();</script>
 
 </body>
 </html>
