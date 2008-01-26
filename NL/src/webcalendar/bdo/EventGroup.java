@@ -32,7 +32,7 @@ public class EventGroup {
 	private int oidCalendar;
 	
 	@Column(name="OID_SKU")
-	private int oidEventGroup;
+	private Integer oidEventGroup;
 
 	public int getOid() {
 		return oid;
@@ -82,11 +82,11 @@ public class EventGroup {
 		this.oidCalendar = oidCalendar;
 	}
 
-	public int getOidEventGroup() {
+	public Integer getOidEventGroup() {
 		return oidEventGroup;
 	}
 
-	public void setOidEventGroup(int oidEventGroup) {
+	public void setOidEventGroup(Integer oidEventGroup) {
 		this.oidEventGroup = oidEventGroup;
 	}	
 	
