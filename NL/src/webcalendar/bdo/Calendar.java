@@ -4,13 +4,15 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.GeneratedValue;
 
 @Entity
 @Table(name = "kalendar")
 
 public class Calendar {
 	
-	@Id//(generate=GeneratorType.AUTO)
+	@Id
+	@GeneratedValue	
 	@Column(name="OID____")
 	private int oid;	
 	
