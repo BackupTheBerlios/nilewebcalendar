@@ -28,14 +28,19 @@
 	String userIdParam=request.getParameter("user_id");
 
 	String name="";
-	String age="";
+	String surname="";
+	String username="";
+	String password="";
 
 	User user;
 	if (userIdParam!=null) {
 		BROUser broUser = new BROUser(getHbSession());
 		user=broUser.loadUser(Integer.parseInt(userIdParam));
 		name=user.getName();
-		age=String.valueOf(user.getAge());
+		surname=user.getSurname();
+		username=user.getUserName();
+		password=user.getPassword();
+		//age=String.valueOf(user.getAge());
 	}
 %>
 
@@ -49,9 +54,17 @@
 		<td><input type=text id="name" name="name" value='<%=name %>'></td>
 	</tr>
 	<tr>
-		<td><b>Vek</b></td>
-		<td><input type=text name="age" value='<%=age %>'></td>
+		<td><b>Prijmeni</b></td>
+		<td><input type=text name="surname" value='<%=surname %>'></td>
 	</tr>
+	<tr>
+		<td><b>Uzivatelske jmeno</b></td>
+		<td><input type=text id="username" name="username" value='<%=username %>'></td>
+	</tr>
+	<tr>
+		<td><b>Heslo</b></td>
+		<td><input type=text name="password" value='<%=password %>'></td>
+	</tr>	
 	</table>
 	
 	<p/>

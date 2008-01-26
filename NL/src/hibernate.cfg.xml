@@ -4,6 +4,7 @@
 
 <hibernate-configuration>
 	<session-factory>
-		<mapping class="webcalendar.bdo.User"/>		
+		<mapping class="webcalendar.bdo.User"/>	
+		<mapping class="webcalendar.bdo.Calendar"/>	
 	</session-factory>
 </hibernate-configuration>

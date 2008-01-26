@@ -25,7 +25,8 @@
 <table border=1 cellspacing=0 cellpadding=2>
 	<tr bgcolor=lightgray>
 		<td><b>Jmeno</b></td>
-		<td><b>Vek</b></td>
+		<td><b>Prijmeni</b></td>
+		<td><b>Uzivatelske jmeno</b></td>
 		<td colspan=2>&nbsp;</td>
 	</tr>
 
@@ -34,13 +35,15 @@
 	BROUser broUser = new BROUser(getHbSession());
 	
 	List<User> users=broUser.loadAllUsers();
+	
 	for (User user : users) {
 		out.println("<tr>");
 		out.println("<td>" + user.getName() + "</td>");
-		out.println("<td>" + user.getAge() + "</td>");
+		out.println("<td>" + user.getSurname() + "</td>");
+		out.println("<td>" + user.getUserName() + "</td>");		
 		out.println("<td>");
-		out.println("<input type=button value='Upravit' onclick=\"navigate('ShowUsersC', 'showEdit',   'user_id=" + user.getId() + "');\" >");
-		out.println("<input type=button value='Smazat'  onclick=\"navigate('ShowUsersC', 'showDelete', 'user_id=" + user.getId() + "');\" >");		
+		out.println("<input type=button value='Upravit' onclick=\"navigate('ShowUsersC', 'showEdit',   'user_id=" + user.getOid() + "');\" >");
+		out.println("<input type=button value='Smazat'  onclick=\"navigate('ShowUsersC', 'showDelete', 'user_id=" + user.getOid() + "');\" >");		
 		out.println("</td>");
 		out.println("</tr>");
 	}

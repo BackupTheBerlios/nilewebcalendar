@@ -1,24 +1,41 @@
 package webcalendar.bdo;
 
+
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-import org.hibernate.annotations.Table;
 
 @Entity
-@Table(appliesTo = "USER")
+@Table(name = "uzivatel")
 public class User 
 {
 	@Id
-	@Column(name="id")
-	private int id;	
+	@Column(name="OID____")
+	private int oid;	
 	
-	@Column(name="name")
+	
+	@Column(name="JMENO__")
 	private String name;
 	
-	@Column(name="age")
-	private int age;
+	@Column(name="PRIJMENI")
+	private String surname;
+	
+	@Column(name="UZIV_JM")
+	private String userName;
+	
+	@Column(name="HESLO__")
+	private String password;	
+	
+	public int getOid() {
+		return oid;
+	}
+
+	public void setOid(int oid) {
+		this.oid = oid;
+	}		
 
 	public String getName() {
 		return name;
@@ -28,21 +45,33 @@ public class User
 		this.name = name;
 	}
 
-	public int getAge() {
-		return age;
+	public String getSurname() {
+		return surname;
 	}
 
-	public void setAge(int age) {
-		this.age = age;
+	public void setSurname(String surname) {
+		this.surname = surname;
 	}
 
-	public int getId() {
-		return id;
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	@Override
 	public String toString() {
-		return "User: id="+id+", name="+name+", age="+age;	
+		return "Uzivatel: oid="+oid+", name="+name+", surname="+surname+", userName="+userName+", password="+password;	
 	}
 
 }

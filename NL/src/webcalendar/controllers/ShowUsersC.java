@@ -32,6 +32,6 @@ public class ShowUsersC extends DefaultController {
 		
 		Map<String,String> params=createParameters(request);
 		redirect(response, "DeleteUserC", "show", params);
-	}	
+	}
 		
 }
