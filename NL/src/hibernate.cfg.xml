@@ -7,6 +7,7 @@
 		<mapping class="webcalendar.bdo.User"/>	
 		<mapping class="webcalendar.bdo.Calendar"/>
 		<mapping class="webcalendar.bdo.EventGroup"/>
-		<mapping class="webcalendar.bdo.SharedRights"/>		
+		<mapping class="webcalendar.bdo.SharedRights"/>
+		<mapping class="webcalendar.bdo.Event"/>			
 	</session-factory>
 </hibernate-configuration>
