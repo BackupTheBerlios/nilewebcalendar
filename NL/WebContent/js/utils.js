@@ -2,11 +2,18 @@ function $(id) {
   return document.getElementById(id);
 }
 
-function submitForm(controller, controllerMethod) {  
+function submitForm(controller, controllerMethod, param1, param2, param3) {  
   
-  	var actionForm = controller + "?" + "$method=" + controllerMethod;
+  	var target = controller + "?"
   
-	document.forms[0].action = actionForm;
+  	if (controllerMethod != undefined && controllerMethod != null)
+  		target += "$method=" + controllerMethod;
+  
+  	if (param1 != undefined && param1 != null) target += "&"+param1;
+  	if (param2 != undefined && param2 != null) target += "&"+param2;
+	if (param3 != undefined && param3 != null) target += "&"+param3;
+	
+	document.forms[0].action = target;
 	document.forms[0].method= "post";
 	document.forms[0].submit();
 }
