@@ -43,4 +43,16 @@ public class BROUser extends BROBase {
 		return users;
 	}	
 	
+	public User getUserByUserName(String userName) {
+		
+		Query q=session.createQuery("from User where userName =:userName");
+		q.setParameter("userName", userName);
+		List<User> users=(List<User>)q.list();
+			
+		if(users!=null && users.size()>0){
+			return users.get(0);	
+		}
+		return null;
+	}
+	
 }

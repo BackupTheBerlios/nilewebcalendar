@@ -28,6 +28,24 @@
 		<servlet-class>
 		webcalendar.controllers.DeleteUserC</servlet-class>
 	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>
+		EditEventGroupC</display-name>
+		<servlet-name>EditEventGroupC</servlet-name>
+		<servlet-class>
+		webcalendar.controllers.EditEventGroupC</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>
+		SharedEventGroupC</display-name>
+		<servlet-name>SharedEventGroupC</servlet-name>
+		<servlet-class>
+		webcalendar.controllers.SharedEventGroupC</servlet-class>
+	</servlet>		
 	<servlet-mapping>
 		<servlet-name>ShowUsersC</servlet-name>
 		<url-pattern>/ShowUsersC</url-pattern>
@@ -39,6 +57,14 @@
 	<servlet-mapping>
 		<servlet-name>DeleteUserC</servlet-name>
 		<url-pattern>/DeleteUserC</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>EditEventGroupC</servlet-name>
+		<url-pattern>/EditEventGroupC</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SharedEventGroupC</servlet-name>
+		<url-pattern>/SharedEventGroupC</url-pattern>
 	</servlet-mapping>
 
 	

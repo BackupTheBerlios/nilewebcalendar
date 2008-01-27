@@ -17,8 +17,7 @@ public class User
 	@GeneratedValue	
 	@Column(name="OID____")
 	private int oid;	
-	
-	
+		
 	@Column(name="JMENO__")
 	private String name;
 	
