@@ -81,7 +81,7 @@
     -->
 
     <!-- Define a non-SSL HTTP/1.1 Connector on port 8080 -->
-    <Connector acceptCount="100" connectionTimeout="20000" disableUploadTimeout="true" enableLookups="false" maxHttpHeaderSize="8192" maxSpareThreads="75" maxThreads="150" minSpareThreads="25" port="8888" redirectPort="8443"/>
+    <Connector acceptCount="100" connectionTimeout="20000" disableUploadTimeout="true" enableLookups="false" maxHttpHeaderSize="8192" maxSpareThreads="75" maxThreads="150" minSpareThreads="25" port="8080" redirectPort="8443"/>
     <!-- Note : To disable connection timeouts, set connectionTimeout value
      to 0 -->
 	
