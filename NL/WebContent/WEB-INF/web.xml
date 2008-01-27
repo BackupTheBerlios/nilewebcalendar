@@ -1,51 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 	<display-name>NL</display-name>
+	
+	<!-- registrace servletu -->
+	
 	<servlet>
-		<description>
-		</description>
-		<display-name>
-		ShowUsersC</display-name>
+		<description></description>
+		<display-name>ShowUsersC</display-name>
 		<servlet-name>ShowUsersC</servlet-name>
-		<servlet-class>
-		webcalendar.controllers.ShowUsersC</servlet-class>
+		<servlet-class>webcalendar.controllers.ShowUsersC</servlet-class>
 	</servlet>
 	<servlet>
-		<description>
-		</description>
-		<display-name>
-		EditUserC</display-name>
+		<description></description>
+		<display-name>EditUserC</display-name>
 		<servlet-name>EditUserC</servlet-name>
-		<servlet-class>
-		webcalendar.controllers.EditUserC</servlet-class>
+		<servlet-class>webcalendar.controllers.EditUserC</servlet-class>
 	</servlet>
 	<servlet>
-		<description>
-		</description>
-		<display-name>
-		DeleteUserC</display-name>
+		<description></description>
+		<display-name>DeleteUserC</display-name>
 		<servlet-name>DeleteUserC</servlet-name>
-		<servlet-class>
-		webcalendar.controllers.DeleteUserC</servlet-class>
+		<servlet-class>webcalendar.controllers.DeleteUserC</servlet-class>
 	</servlet>
 	<servlet>
-		<description>
-		</description>
-		<display-name>
-		EditEventGroupC</display-name>
+		<description></description>
+		<display-name>EditEventGroupC</display-name>
 		<servlet-name>EditEventGroupC</servlet-name>
-		<servlet-class>
-		webcalendar.controllers.EditEventGroupC</servlet-class>
-	</servlet>
+		<servlet-class>webcalendar.controllers.EditEventGroupC</servlet-class>
+	</servlet>	
 	<servlet>
-		<description>
-		</description>
-		<display-name>
-		SharedEventGroupC</display-name>
-		<servlet-name>SharedEventGroupC</servlet-name>
-		<servlet-class>
-		webcalendar.controllers.SharedEventGroupC</servlet-class>
+		<description></description>
+		<display-name>EventGroupsManageC</display-name>
+		<servlet-name>EventGroupsManageC</servlet-name>
+		<servlet-class>webcalendar.controllers.EventGroupsManageC</servlet-class>
 	</servlet>		
+	<servlet>
+		<description></description>
+		<display-name>SharedEventGroupC</display-name>
+		<servlet-name>SharedEventGroupC</servlet-name>
+		<servlet-class>webcalendar.controllers.SharedEventGroupC</servlet-class>
+	</servlet>		
+	
+	<!-- mapovani -->
+	
 	<servlet-mapping>
 		<servlet-name>ShowUsersC</servlet-name>
 		<url-pattern>/ShowUsersC</url-pattern>
@@ -63,11 +60,13 @@
 		<url-pattern>/EditEventGroupC</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
+		<servlet-name>EventGroupsManageC</servlet-name>
+		<url-pattern>/EventGroupsManageC</url-pattern>
+	</servlet-mapping>
+		<servlet-mapping>
 		<servlet-name>SharedEventGroupC</servlet-name>
 		<url-pattern>/SharedEventGroupC</url-pattern>
 	</servlet-mapping>
-
-	
 
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>

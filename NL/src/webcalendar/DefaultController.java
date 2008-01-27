@@ -122,6 +122,7 @@ public abstract class DefaultController extends HttpServlet {
 		}	
 		catch (Exception e) {
 		    if (tx!=null) tx.rollback();
+		    e.printStackTrace();
 		    throw new ServletException(e);
 		}
 		finally {

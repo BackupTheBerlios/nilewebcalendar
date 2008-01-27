@@ -15,6 +15,20 @@ public class BROEventGroup extends BROBase {
 		super(session);		
 	}
 	
+	
+	public void saveEventGroup(EventGroup eventGroup) {
+		session.save(eventGroup);				
+	}
+	
+	public List<EventGroup> loadEventGroupsForCalendar(int calendar) {
+		
+		Query q=session.createQuery("from EventGroup where oidCalendar=:oid_calendar ");
+		q.setParameter("oid_calendar", calendar);
+		List<EventGroup> groups=(List<EventGroup>)q.list();
+		
+		return groups;		
+	}
+	
 	//metoda pro ziskani event groupy
 	public EventGroup loadEventGroup(int id) {
 		
@@ -49,6 +63,7 @@ public class BROEventGroup extends BROBase {
 		
 		session.update(eventGroup);
 	}
+	
 	
 	
 	//metoda pro zruseni prav ostatnim uzvitelum na vlastnikovu event groupu

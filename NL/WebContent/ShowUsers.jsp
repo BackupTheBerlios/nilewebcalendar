@@ -23,7 +23,7 @@
 
 
 <table border=1 cellspacing=0 cellpadding=2>
-	<tr bgcolor=lightgray>
+	<tr bgcolor=#cccccc>
 		<td><b>Jmeno</b></td>
 		<td><b>Prijmeni</b></td>
 		<td><b>Uzivatelske jmeno</b></td>

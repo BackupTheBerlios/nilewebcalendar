@@ -14,7 +14,7 @@ public class EventGroup {
 	@Id
 	@GeneratedValue	
 	@Column(name="OID____")
-	private int oid;	
+	private Integer oid;	
 	
 	@Column(name="NAZEV__")
 	private String title;
@@ -23,13 +23,13 @@ public class EventGroup {
 	private String color;
 	
 	@Column(name="ZOBRAZ_")
-	private int visible;
+	private boolean visible;
 	
 	@Column(name="AKTIV__")
-	private int enable;
+	private boolean enable;
 	
 	@Column(name="OID_KAL")
-	private int oidCalendar;
+	private Integer oidCalendar;
 	
 	@Column(name="OID_SKU")
 	private Integer oidEventGroup;
@@ -38,7 +38,7 @@ public class EventGroup {
 		return oid;
 	}
 
-	public void setOid(int oid) {
+	public void setOid(Integer oid) {
 		this.oid = oid;
 	}
 
@@ -58,19 +58,19 @@ public class EventGroup {
 		this.color = color;
 	}
 
-	public int getVisible() {
+	public boolean getVisible() {
 		return visible;
 	}
 
-	public void setVisible(int visible) {
+	public void setVisible(boolean visible) {
 		this.visible = visible;
 	}
 
-	public int getEnable() {
+	public boolean getEnable() {
 		return enable;
 	}
 
-	public void setEnable(int enable) {
+	public void setEnable(boolean enable) {
 		this.enable = enable;
 	}
 
