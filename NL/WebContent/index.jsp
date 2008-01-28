@@ -18,7 +18,7 @@
 </tr>
 
 <tr>
-<td><a href='CalendarC?calendar_id=5'>Kalendar (calendar_id=5)</a></td>
+<td><a href='CalendarC?calendar_id=1'>Kalendar (calendar_id=1)</a></td>
 <td></td>
 </tr>
 <tr>
@@ -40,6 +40,10 @@
 <tr>
 <td><a href='SharedEventGroupC?eventGroup_id=1'>Prideleni prav</a></td>
 <td>SharedEventGroup.jsp</td>
+</tr>
+<tr>
+<td><a href='EventC?calendar_id=1&event_id=2'>Vytvoreni udalosti</a></td>
+<td>Event.jsp</td>
 </tr>
 </table>
 

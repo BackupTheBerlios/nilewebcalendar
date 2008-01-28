@@ -42,6 +42,8 @@ public class EventGroup {
 	@OneToMany(targetEntity=SharedRights.class, mappedBy="oidEventGroup")
 	private List<SharedRights> sharedRightss;
 	
+	@OneToMany(targetEntity=Event.class, mappedBy="oidEventGroup")
+	private List<Event> events;
 
 	public int getOid() {
 		return oid;
@@ -105,6 +107,14 @@ public class EventGroup {
 
 	public void setSharedRights(List<SharedRights> sharedRightss) {
 		this.sharedRightss = sharedRightss;
+	}
+
+	public List<Event> getEvents() {
+		return events;
+	}
+
+	public void setEvents(List<Event> events) {
+		this.events = events;
 	}	
 	
 }

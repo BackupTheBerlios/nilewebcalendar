@@ -25,7 +25,7 @@ public class CalendarC extends DefaultController {
 	public void addEvent(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
 		Map<String,String> params=createParameters(request);
-		redirect(response, "EditEventGroupC", null, params);
+		redirect(response, "EventC", null, params);
 	}
 	
 	public void manageEventGroups(HttpServletRequest request, HttpServletResponse response) throws IOException {

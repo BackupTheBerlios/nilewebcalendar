@@ -1,22 +1,25 @@
 package webcalendar.bdo;
 
 import java.text.DateFormat;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "udalost")
 
-public class Event {
+public class Event implements Comparable<Event>{
 	
 	@Id
 	@GeneratedValue	
 	@Column(name="OID____")
-	private int oid;	
+	private Integer oid;	
 	
 	@Column(name="NAZEV__")
 	private String title;
@@ -25,19 +28,23 @@ public class Event {
 	private String description;
 	
 	@Column(name="DAT_OD_")
-	private DateFormat dateTimefrom;
+	private Date dateTimeFrom;
 	
 	@Column(name="DAT_DO_")
-	private DateFormat dateTimeTo;
+	private Date dateTimeTo;
 	
 	@Column(name="OID_SKU")
-	private int oidGroup;
+	private Integer oidEventGroup;
 
-	public int getOid() {
+	@ManyToOne(targetEntity=EventGroup.class)
+	@JoinColumn(name="OID_SKU", nullable=false, updatable=false, insertable=false)
+	private EventGroup eventGroup;
+	
+	public Integer getOid() {
 		return oid;
 	}
 
-	public void setOid(int oid) {
+	public void setOid(Integer oid) {
 		this.oid = oid;
 	}
 
@@ -57,28 +64,44 @@ public class Event {
 		this.description = description;
 	}
 
-	public DateFormat getDateTimefrom() {
-		return dateTimefrom;
+	public Date getDateTimeFrom() {
+		return dateTimeFrom;
 	}
 
-	public void setDateTimefrom(DateFormat dateTimefrom) {
-		this.dateTimefrom = dateTimefrom;
+	public void setDateTimeFrom(Date dateTimeFrom) {
+		this.dateTimeFrom = dateTimeFrom;
 	}
 
-	public DateFormat getDateTimeTo() {
+	public Date getDateTimeTo() {
 		return dateTimeTo;
 	}
 
-	public void setDateTimeTo(DateFormat dateTimeTo) {
+	public void setDateTimeTo(Date dateTimeTo) {
 		this.dateTimeTo = dateTimeTo;
 	}
 
-	public int getOidGroup() {
-		return oidGroup;
+	public Integer getOidEventGroup() {
+		return oidEventGroup;
 	}
 
-	public void setOidGroup(int oidGroup) {
-		this.oidGroup = oidGroup;
-	}	
+	public void setOidEventGroup(Integer oidEventGroup) {
+		this.oidEventGroup = oidEventGroup;
+	}
 
+	public int compareTo(Event o) {
+		
+		return this.dateTimeFrom.compareTo(dateTimeFrom);
+
+	}
+
+	public EventGroup getEventGroup() {
+		return eventGroup;
+	}
+
+	public void setEventGroup(EventGroup eventGroup) {
+		this.eventGroup = eventGroup;
+	}
+
+	
+	
 }

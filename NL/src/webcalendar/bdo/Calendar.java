@@ -30,8 +30,8 @@ public class Calendar {
 	
 	@Column(name="OID_UZI")
 	private int oidUser;
-		
-	@OneToMany(mappedBy="oid")
+	
+	@OneToMany(targetEntity=EventGroup.class, mappedBy="oidCalendar")
 	private List<EventGroup> eventGroups;
 
     @OneToOne(targetEntity=webcalendar.bdo.User.class)

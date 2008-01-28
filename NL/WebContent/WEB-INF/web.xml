@@ -51,6 +51,12 @@
 	</servlet>		
 	<servlet>
 		<description></description>
+		<display-name>EventC</display-name>
+		<servlet-name>EventC</servlet-name>
+		<servlet-class>webcalendar.controllers.EventC</servlet-class>
+	</servlet>		
+	<servlet>
+		<description></description>
 		<display-name>LoginC</display-name>
 		<servlet-name>LoginC</servlet-name>
 		<servlet-class>webcalendar.controllers.LoginC</servlet-class>
@@ -87,11 +93,13 @@
 		<url-pattern>/CalendarC</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
+		<servlet-name>EventC</servlet-name>
+		<url-pattern>/EventC</url-pattern>
+	</servlet-mapping>	
+	<servlet-mapping>
 		<servlet-name>LoginC</servlet-name>
 		<url-pattern>/LoginC</url-pattern>
-	</servlet-mapping>	
-	
-	<!-- defaultni stranka -->
+	</servlet-mapping>
 	
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>

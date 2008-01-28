@@ -28,6 +28,9 @@
 		webcalendar.bdo.Calendar calendar=broCalendar.loadCalendar(calendarId);
 			
 		User user=calendar.getUser();
+		
+		String currentDateParam=request.getParameter("currentDate");
+		Date currentDate=currentDateParam!=null ? DateTimeUtils.toDate(currentDateParam,"00:00") : new Date();
 	
 	%>
 	
@@ -60,8 +63,8 @@
 	
 	<div id="left" >
 	
-		<input type=text name='date' value='' style="width:75px" />
-		<input type=button name='' value='->' />
+		<input type=text name='currentDate'  style="width:75px" value='<%=DateTimeUtils.toStringDate(currentDate) %>' />
+		<input type=button value="Zobrazit" />
 	
 		<hr/>
 		
@@ -74,19 +77,58 @@
 	<div id="center" >
 	
 		<form> 			
-		
 			
-			<table border=1 width=* >
-			<tr>
-				<td>Pondeli</td>
-				<td>Utery</td>
-				<td>Streda</td>
-				<td>Ctvrtek</td>
-				<td>Patek</td>
-				<td>Sobota</td>
-				<td>Nedela</td>
-			</tr>		
-			</table>							
+			<% 				
+				Date tempDate=DateTimeUtils.getStartOfWeekDate(currentDate);
+				BROEvent broEvent=new BROEvent(getHbSession());
+
+				out.println("<table border=1 width=* >");
+				out.println("<tr>");	
+				String[] daysArray=new String[] {"Pondìlí","Úterý","Støeda","Ètvrtek","Pátek","Sobota","Nedìle"}; 
+				
+				for (int i=0; i<7; i++) {
+					
+					tempDate.setDate(tempDate.getDate()+1);
+					
+					out.println("<td width=150px><b>");					
+					out.println(daysArray[i]);
+					out.println("</b><br>");
+					out.println(DateTimeUtils.toStringDate(tempDate));
+					out.println("</td>");
+				}
+				
+				tempDate=DateTimeUtils.getStartOfWeekDate(currentDate);
+				out.println("</tr>");
+				
+				out.println("<tr>");	
+				
+				for (int i=0; i<7; i++) {
+					
+					out.println("<td>");	
+					
+					tempDate.setDate(tempDate.getDate()+1);
+					
+					List<Event> events=broEvent.loadEventsForCalendarAndDate(calendarId, tempDate);
+					
+					for (Event event:events) {
+					
+						if (event.getEventGroup().getVisible()&&event.getEventGroup().getEnable()) {
+						
+							out.println("<span style='background: "+event.getEventGroup().getColor()+"'><b>"
+									+ DateTimeUtils.toStringTime(event.getDateTimeFrom())
+									+ "-"+DateTimeUtils.toStringTime(event.getDateTimeTo()) 
+									+ "</b><br/>");
+							out.println(event.getTitle()+"</span><p/>");						
+						}
+					}
+					
+					out.println("<br></td>");
+				}				
+				
+				out.println("</tr>");	
+				out.println("</table>");	
+			%>		
+										
 			
 		</form>
 	</div>

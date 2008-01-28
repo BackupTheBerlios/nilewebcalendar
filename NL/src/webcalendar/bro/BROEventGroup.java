@@ -29,6 +29,10 @@ public class BROEventGroup extends BROBase {
 		return groups;		
 	}
 	
+
+	
+	
+
 	//metoda pro ziskani event groupy
 	public EventGroup loadEventGroup(int id) {
 		
@@ -66,6 +70,11 @@ public class BROEventGroup extends BROBase {
 	
 	
 	
+	
+	
+	
+	
+	
 	//metoda pro zruseni prav ostatnim uzvitelum na vlastnikovu event groupu
 	public void deleteSharedRights(int sharedRightsId){
 		
@@ -76,6 +85,8 @@ public class BROEventGroup extends BROBase {
 	
 	
 	
+	
+	
 	public void changeEnabled(int eventGroupOid, boolean enabled) {
 	
 		EventGroup eventGroup=loadEventGroup(eventGroupOid);
@@ -83,4 +94,7 @@ public class BROEventGroup extends BROBase {
 		saveEventGroup(eventGroup);	
 	}
 	
+	
+	
+
 }
