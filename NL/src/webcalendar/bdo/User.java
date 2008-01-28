@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -29,6 +30,10 @@ public class User
 	
 	@Column(name="HESLO__")
 	private String password;	
+	
+	@OneToOne(targetEntity=Calendar.class, mappedBy="user")
+	private Calendar calendar;
+	
 	
 	public int getOid() {
 		return oid;
@@ -73,6 +78,14 @@ public class User
 	@Override
 	public String toString() {
 		return "Uzivatel: oid="+oid+", name="+name+", surname="+surname+", userName="+userName+", password="+password;	
+	}
+
+	public Calendar getCalendar() {
+		return calendar;
+	}
+
+	public void setCalendar(Calendar calendar) {
+		this.calendar = calendar;
 	}
 
 }

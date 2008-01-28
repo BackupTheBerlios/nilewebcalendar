@@ -11,6 +11,16 @@
 <h1>Testovaci rozcestnik</h1> 
 
 <table border=1>
+
+<tr>
+<td><a href='LoginC'><b>Login</b></a></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href='CalendarC?calendar_id=5'>Kalendar (calendar_id=5)</a></td>
+<td></td>
+</tr>
 <tr>
 <td><a href='EventGroupsManageC?calendar_id=1'>Sprava skupin (calendar_id=1)</a></td>
 <td></td>

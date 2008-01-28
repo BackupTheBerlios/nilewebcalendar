@@ -74,14 +74,13 @@ public class BROEventGroup extends BROBase {
 		session.delete(sharedRights);
 	}
 	
-	public List<SharedRights> loadAllUsersWithRights(){
-		
-		//select UZIV_JM from uzivatel, prava_sdileni where uzivatel.OID____ = prava_sdileni.OID_UZI;
-		
-		Query q=session.createQuery("from SharedRights");
-		List<SharedRights> usersWithRights=(List<SharedRights>)q.list();
-		
-		return usersWithRights;				
+	
+	
+	public void changeEnabled(int eventGroupOid, boolean enabled) {
+	
+		EventGroup eventGroup=loadEventGroup(eventGroupOid);
+		eventGroup.setEnable(enabled);
+		saveEventGroup(eventGroup);	
 	}
 	
 }

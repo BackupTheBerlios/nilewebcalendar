@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	
+	<!-- koren aplikace -->
+	
 	<display-name>NL</display-name>
 	
 	<!-- registrace servletu -->
@@ -39,7 +42,19 @@
 		<display-name>SharedEventGroupC</display-name>
 		<servlet-name>SharedEventGroupC</servlet-name>
 		<servlet-class>webcalendar.controllers.SharedEventGroupC</servlet-class>
+	</servlet>	
+	<servlet>
+		<description></description>
+		<display-name>CalendarC</display-name>
+		<servlet-name>CalendarC</servlet-name>
+		<servlet-class>webcalendar.controllers.CalendarC</servlet-class>
 	</servlet>		
+	<servlet>
+		<description></description>
+		<display-name>LoginC</display-name>
+		<servlet-name>LoginC</servlet-name>
+		<servlet-class>webcalendar.controllers.LoginC</servlet-class>
+	</servlet>	
 	
 	<!-- mapovani -->
 	
@@ -66,8 +81,18 @@
 		<servlet-mapping>
 		<servlet-name>SharedEventGroupC</servlet-name>
 		<url-pattern>/SharedEventGroupC</url-pattern>
+	</servlet-mapping>	
+	<servlet-mapping>
+		<servlet-name>CalendarC</servlet-name>
+		<url-pattern>/CalendarC</url-pattern>
 	</servlet-mapping>
-
+	<servlet-mapping>
+		<servlet-name>LoginC</servlet-name>
+		<url-pattern>/LoginC</url-pattern>
+	</servlet-mapping>	
+	
+	<!-- defaultni stranka -->
+	
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.htm</welcome-file>

@@ -1,5 +1,5 @@
 <%@ page language="java" extends="webcalendar.DefaultJSP" 
-	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+	contentType="text/html; charset=windows-1250" pageEncoding="windows-1250"%>
     
 <jsp:directive.page import="org.hibernate.*" />
 <jsp:directive.page import="java.util.*" />
@@ -11,31 +11,31 @@
 
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<title>Sdileni uzivatelske skupiny ...</title>
+<title>Sdíleni skupiny událostí</title>
 
 <script language="javascript" src="js/utils.js"></script>
 
 </head>
 <body>
 
-<h1>Sdileni uzivatelske skupiny ...</h1>
+<h1>Sdílení skupiny událostí</h1>
 
 <%		
-	String eventGroupIdParam=request.getParameter("eventGroup_id");	
-	String userName="";	
+	int eventGroupId=Integer.parseInt(request.getParameter("eventGroup_id"));	
+	int calendarId=Integer.parseInt(request.getParameter("calendar_id"));	
 %>
 
 <form>
 
-	<input type=hidden name='eventGroup_id' value='<%=eventGroupIdParam %>' />
+	<input type=hidden name='eventGroup_id' value='<%=eventGroupId %>' />
+	<input type=hidden name='calendar_id' value='<%=calendarId %>' />
 	
 	<table border=0>
 	<tr>
-		<td><b>Uzivatel</b></td>
-		<td><input type=text id="userName" name="userName" value='<%=userName%>'></td>
-		<td><input type=button value='Pridat' onclick="submitForm('SharedEventGroupC', 'addRights')"></td>
+		<td><b>Uživatelské jméno</b></td>
+		<td><input type=text id="userName" name="userName" /></td>		
+		<td><input type=button value='Pøidat' onclick="submitForm('SharedEventGroupC', 'addRights')" /></td>
 	</tr>	
 	</table>	
 	<p/>
@@ -43,20 +43,26 @@
 	
 	<table border=1 cellspacing=0 cellpadding=2>
 	<tr bgcolor=lightgray>		
-		<td><b>Uzivatelske jmeno</b></td>
+		<td><b>Uživatelské jméno</b></td>
+		<td><b>Jméno</b></td>
+		<td><b>Pøíjmení</b></td>
 		<td colspan=2>&nbsp;</td>
 	</tr>
 	
 <%
-	
+
+
 	BROEventGroup broEventGroup = new BROEventGroup(getHbSession());
-	List<SharedRights> rights = broEventGroup.loadAllUsersWithRights();
+	EventGroup eventGroup = broEventGroup.loadEventGroup(eventGroupId);
+	List<SharedRights> sharedRightss = eventGroup.getSharedRightss();		
 	
-	for (SharedRights userWithRights : rights) {
+	for (SharedRights sharedRights : sharedRightss) {
 		out.println("<tr>");
-		out.println("<td>" + userWithRights.getUser().getName() + "</td>");
+		out.println("<td>" + sharedRights.getUser().getUserName() + "</td>");
+		out.println("<td>" + sharedRights.getUser().getName() + "</td>");
+		out.println("<td>" + sharedRights.getUser().getSurname() + "</td>");
 		out.println("<td>");
-		out.println("<input type=button value='Smazat'  onclick=\"submitForm('SharedEventGroupC', 'removeUserWithRights', 'userWithRights_id=" + userWithRights.getOid() + "');\" >");		
+		out.println("<input type=button value='Zrušit sdílení'  onclick=\"submitForm('SharedEventGroupC', 'removeUserWithRights', 'userWithRights_id=" + sharedRights.getOid() + "');\" >");		
 		out.println("</td>");
 		out.println("</tr>");
 	}
@@ -66,7 +72,7 @@
 </table>
 <p/>	
 	
-	<input type="button" value="Rozcestnik" onclick="submitForm('index.jsp');" />
+	<input type="button" value="Zpìt" onclick="submitForm('SharedEventGroupC','goBack');" />
 	
 	</form>
 

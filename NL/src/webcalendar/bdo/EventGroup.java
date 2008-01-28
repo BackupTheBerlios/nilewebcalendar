@@ -1,10 +1,15 @@
 package webcalendar.bdo;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import webcalendar.controllers.SharedEventGroupC;
 
 @Entity
 @Table(name = "skupina_udalosti")
@@ -33,6 +38,10 @@ public class EventGroup {
 	
 	@Column(name="OID_SKU")
 	private Integer oidEventGroup;
+
+	@OneToMany(targetEntity=SharedRights.class, mappedBy="oidEventGroup")
+	private List<SharedRights> sharedRightss;
+	
 
 	public int getOid() {
 		return oid;
@@ -88,6 +97,14 @@ public class EventGroup {
 
 	public void setOidEventGroup(Integer oidEventGroup) {
 		this.oidEventGroup = oidEventGroup;
+	}
+
+	public List<SharedRights> getSharedRightss() {
+		return sharedRightss;
+	}
+
+	public void setSharedRights(List<SharedRights> sharedRightss) {
+		this.sharedRightss = sharedRightss;
 	}	
 	
 }

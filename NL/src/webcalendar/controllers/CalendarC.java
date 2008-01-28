@@ -5,22 +5,37 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.text.NavigationFilter;
 
 import webcalendar.DefaultController;
 import webcalendar.bdo.EventGroup;
 import webcalendar.bro.BROEventGroup;
 
 
-public class EventGroupsManageC extends DefaultController {
+public class CalendarC extends DefaultController {
 	
+	//TODO udelat konstanty pro vsechny kalendare a jspcka (components :)
 
 	public void show(HttpServletRequest request, HttpServletResponse response) throws IOException {
 			
 		Map<String,String> params=createParameters(request);
-		showView(response, "EventGroupsManage.jsp", params);						
+		showView(response, "Calendar.jsp", params);						
 	}
 	
+	public void addEvent(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		
+		Map<String,String> params=createParameters(request);
+		redirect(response, "EditEventGroupC", null, params);
+	}
 	
+	public void manageEventGroups(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		
+		Map<String,String> params=createParameters(request);
+		redirect(response, "EventGroupsManageC", null, params);
+	}	
+	
+	
+	/*
 	public void addNewEventGroup(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
 		int calendarOid=Integer.parseInt(request.getParameter("calendar_id"));
@@ -40,41 +55,16 @@ public class EventGroupsManageC extends DefaultController {
 		
 		Map<String,String> params=createParameters();		
 		params.put("calendar_id", String.valueOf(calendarOid));		
+		
 		showView(response, "EventGroupsManage.jsp", params);
-	}
-	
-	
-	public void editEventGroup(HttpServletRequest request, HttpServletResponse response) throws IOException {
-				
-		Map<String,String> params=createParameters(request);
-		redirect(response, "EditEventGroupC", null, params);		
-	}	
-	
-	
-	public void changeActive(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		
-		int calendarOid=Integer.parseInt(request.getParameter("calendar_id"));
-		int eventGroupOid=Integer.parseInt(request.getParameter("eventgroup_id"));
-		
-		System.out.println(">>"+request.getParameter("enabled"));
-		boolean enabled=new Boolean(request.getParameter("enabled")).booleanValue();
-		
-		BROEventGroup broEventGroup = new BROEventGroup(getHbSession());	
-		broEventGroup.changeEnabled(eventGroupOid, enabled);
-		
-		
-		Map<String,String> params=createParameters();		
-		params.put("calendar_id", String.valueOf(calendarOid));					
-		showView(response, "EventGroupsManage.jsp", params);		
-	}		
-	
-	public void shareEventGroup(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		
-		Map<String,String> params=createParameters(request);
-		redirect(response, "SharedEventGroupC", null, params);		
-	}	
+	}*/
 	
 	/*
+	public void showAdd(HttpServletRequest request, HttpServletResponse response) throws IOException {
+				
+		redirect(response, "EditUserC", "show", null);
+	}	
+	
 	public void showDelete(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
 		Map<String,String> params=createParameters(request);

@@ -37,12 +37,12 @@
 	<td><input type="input" name="title" value=""></td>
 	<td>
 		<div style="width:43px;width/* */:/**/40px;width: /**/40px;height:20px;border:1px solid #7F9DB9;">		
-			<input type="hidden" name="color">
-			<input type="button" disabled='true' style="width:23px;font-size:12px;height:20px;float:left;border:0px;padding-top:2px" name="rgb" size="10">
+			<input type="hidden" name="color" />
+			<input type="button" disabled='true' style="float:left;width:23px;height:20px;" name="rgb" size="10" />
 			<img style="float:right;padding-right:1px;padding-top:1px" src="images/select_arrow.gif" 
 				onmouseover="this.src='images/select_arrow_over.gif'" 
 				onmouseout="this.src='images/select_arrow.gif'" 
-				onclick="showColorPicker(this,colorChanged)">
+				onclick="showColorPicker(this,colorChanged)" />
 			<script>
 				colorChanged('skyblue'); //default color
 				function colorChanged(color) {
@@ -83,17 +83,20 @@
 			
 			<tr>
 			<td><%=group.getTitle() %></td>
-			<td></td>
+			<td>
+				<input type="button" disabled='true' style="width:23px;height:20px" style="background:<%=group.getColor() %>"/>
+			</td>
 			<td>
 				<input type=checkbox 
-				    checked=<%= group.getEnable() %>
-					onclick="submitForm('EventGroupsManageC', 'changeActive', 'checked='+this.checked, 'group_id=<%=group.getOid() %>')" />		
+				    <%= group.getEnable() ? "checked" : "" %>
+					onclick="submitForm('EventGroupsManageC', 'changeActive', 'enabled='+this.checked, 'eventgroup_id=<%=group.getOid() %>')" />		
 			</td>
 
-			<td><input type=button value='Upravit' onclick="navigate('EventGroupsManageC', 'editGroup',   'group_id=<%=group.getOid() %>');" >
-			<td><input type=button value='Smazat'  onclick="navigate('EventGroupsManageC', 'deleteGroup', 'group_id=<%=group.getOid() %>');" >		
-			<td><input type=button value='Sdílet'  onclick="navigate('EventGroupsManageC', 'shareGroup',  'group_id=<%=group.getOid() %>');" >
-			
+			<td>
+				<input type=button value='Upravit' onclick="submitForm('EventGroupsManageC', 'editEventGroup',   'eventGroup_id=<%=group.getOid() %>');" >
+				<input type=button value='Smazat'  onclick="submitForm('EventGroupsManageC', 'deleteEventGroup', 'eventGroup_id=<%=group.getOid() %>');" >		
+				<input type=button value='Sdílet'  onclick="submitForm('EventGroupsManageC', 'shareEventGroup',  'eventGroup_id=<%=group.getOid() %>');" >
+			</td>
 			</tr>
 			<%
 		

@@ -1,5 +1,5 @@
 <%@ page language="java" extends="webcalendar.DefaultJSP"
-	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+	contentType="text/html; charset=windows-1250" pageEncoding="windows-1250"%>
 
 <jsp:directive.page import="org.hibernate.*" />
 <jsp:directive.page import="java.util.*" />
@@ -11,22 +11,22 @@
 
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Uzivatele - seznam</title>
+
+<title>Správa uživatelù</title>
 
 <script language="javascript" src="js/utils.js"></script>
 
 </head>
 <body>
 
-<h1>Uzivatele - seznam</h1>
+<h1>Správa uživatelù</h1>
 
 
 <table border=1 cellspacing=0 cellpadding=2>
 	<tr bgcolor=#cccccc>
-		<td><b>Jmeno</b></td>
-		<td><b>Prijmeni</b></td>
-		<td><b>Uzivatelske jmeno</b></td>
+		<td><b>Jméno</b></td>
+		<td><b>Pøíjmení</b></td>
+		<td><b>Pøihlašovací jméno</b></td>
 		<td colspan=2>&nbsp;</td>
 	</tr>
 
@@ -54,9 +54,8 @@
 
 <p/>
 
-<input type="button" value="Rozcestnik" onclick="navigate('index.jsp');" />
-
-<input type="button" value="Pridat uzivatele" onclick="navigate('ShowUsersC', 'showAdd');" />
+<input type="button" value="Pøidat uživatele" onclick="navigate('ShowUsersC', 'showAdd');" />
+<input type="button" value="Zpìt" onclick="navigate('LoginC');" />
 
 </body>
 </html>

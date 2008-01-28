@@ -3,11 +3,15 @@ package webcalendar.bdo;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
 
@@ -26,10 +30,29 @@ public class Calendar {
 	
 	@Column(name="OID_UZI")
 	private int oidUser;
-	
+		
 	@OneToMany(mappedBy="oid")
 	private List<EventGroup> eventGroups;
 
+    @OneToOne(targetEntity=webcalendar.bdo.User.class)
+    @JoinColumn(name="OID_UZI", insertable=false, updatable=false)
+	private User user;
+	
+	/*
+	 * 	@ManyToOne(targetEntity=webcalendar.bdo.User.class)
+	@JoinColumn(name="OID_UZI", nullable=false, updatable=false, insertable=false)
+
+	 */
+	
+	public User getUser() {
+		return user;
+	}
+	
+	public void setUser(User user) {
+		this.user=user;
+	}
+	
+	
 	public List<EventGroup> getEventGroups() {
 		return eventGroups;
 	}

@@ -24,13 +24,15 @@ public class SharedEventGroupC extends DefaultController {
 	throws IOException {
 		
 		int eventGroupId=Integer.parseInt(request.getParameter("eventGroup_id"));
+		int calendarId=Integer.parseInt(request.getParameter("calendar_id"));
+		
 		String userName=request.getParameter("userName");
 		
 		BROEventGroup broEventGroup=new BROEventGroup(getHbSession());
 		broEventGroup.addRightsForUser(eventGroupId,userName);	
 		
 		Map<String,String> params=createParameters();
-			
+		params.put("calendar_id",String.valueOf(calendarId));	
 		params.put("eventGroup_id",String.valueOf(eventGroupId));
 		showView(response, "SharedEventGroup.jsp", params);
 	}	
@@ -38,7 +40,8 @@ public class SharedEventGroupC extends DefaultController {
 	public void removeUserWithRights (HttpServletRequest request, HttpServletResponse response)
 	throws IOException {
 		
-		//Map<String,String> params2=createParameters(request);
+		int eventGroupId=Integer.parseInt(request.getParameter("eventGroup_id"));
+		int calendarId=Integer.parseInt(request.getParameter("calendar_id"));
 		
 		//ziskani parametru
 		int userWithRightsId=Integer.parseInt(request.getParameter("userWithRights_id"));
@@ -46,20 +49,18 @@ public class SharedEventGroupC extends DefaultController {
 		//volani BRO
 		BROEventGroup broEventGroup=new BROEventGroup(getHbSession());
 		broEventGroup.deleteSharedRights(userWithRightsId);
-		
-		//presmerovani
-		int eventGroupId=Integer.parseInt(request.getParameter("eventGroup_id"));
-		
-		Map<String,String> params=createParameters();
-			
+					
+		Map<String,String> params=createParameters();			
 		params.put("eventGroup_id",String.valueOf(eventGroupId));
+		params.put("calendar_id",String.valueOf(calendarId));
 		showView(response, "SharedEventGroup.jsp", params);
 	}
 	
-	/*public void goBack(HttpServletRequest request, HttpServletResponse response)
+	public void goBack(HttpServletRequest request, HttpServletResponse response)
 	throws IOException {
-
-		redirect(response, "ShowUsersC", null, null);
-	}*/	
+		
+		Map<String,String> params=createParameters(request);
+		redirect(response, "EventGroupsManageC", null, params);
+	}
 
 }

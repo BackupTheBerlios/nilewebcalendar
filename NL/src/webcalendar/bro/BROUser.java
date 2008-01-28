@@ -1,11 +1,16 @@
 package webcalendar.bro;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import com.twmacinta.util.MD5;
+
 import webcalendar.bdo.User;
+
+
 
 
 public class BROUser extends BROBase {
@@ -54,5 +59,38 @@ public class BROUser extends BROBase {
 		}
 		return null;
 	}
+	
+	private String getHashInHex(String str) {
+		
+		MD5 md5 = new MD5();
+		 
+	    try {
+			md5.Update(str, "UTF-8");
+		} catch (UnsupportedEncodingException e) {			
+		}
+	    String hash = md5.asHex();
+
+	    return hash;
+	}
+	
+	public void registerUser(String login, String password, String name, String surname) {
+		User user=new User();
+		user.setName(name);
+		user.setSurname(surname);
+		user.setUserName(login);
+		user.setPassword(getHashInHex(password));
+		session.save(user);
+	}
+	
+	public boolean checkAuthentication(String login, String password) {
+		
+		Query q=session.createQuery("from User where userName =:userName AND password =:password");
+		q.setParameter("userName", login);
+		q.setParameter("password", getHashInHex(password));
+		List<User> users=(List<User>)q.list();
+
+		return users!=null && users.size()>0;
+	}
+	
 	
 }

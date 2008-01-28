@@ -43,6 +43,7 @@ public abstract class DefaultJSP extends HttpJspBase implements HttpJspPage {
 			if (tx!=null) tx.commit();
 		}	
 		catch (Exception e) {
+			e.printStackTrace();
 		    if (tx!=null) tx.rollback();
 		    throw new ServletException(e);
 		}
